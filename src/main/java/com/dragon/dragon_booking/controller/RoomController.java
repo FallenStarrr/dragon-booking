@@ -25,7 +25,7 @@ public class RoomController {
    
    @PostMapping("/add/new-room")
    public ResponseEntity<RoomResponse> addNewRoom(
-   @RequestParam("photo") MultipartFile  photo, 
+   @RequestParam("photo") String  photo, 
    @RequestParam("roomType") String roomType, 
    @RequestParam("roomPrice") BigDecimal roomPrice) {
             Room savedRoom = roomService.addNewRoom(photo, roomType, roomPrice);

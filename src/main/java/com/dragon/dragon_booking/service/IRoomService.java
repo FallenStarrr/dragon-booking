@@ -10,5 +10,5 @@ import org.springframework.web.multipart.MultipartFile;
 import com.dragon.dragon_booking.model.Room;
 
 public interface IRoomService {
-    Room addNewRoom(MultipartFile photo, String roomType, BigDecimal roomPrice) throws SerialException, SQLException;
+    Room addNewRoom(String photo, String roomType, BigDecimal roomPrice);
 }

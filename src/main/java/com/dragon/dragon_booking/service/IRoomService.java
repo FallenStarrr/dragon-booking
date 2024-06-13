@@ -9,6 +9,8 @@ import org.springframework.web.multipart.MultipartFile;
 
 import com.dragon.dragon_booking.model.Room;
 
+import io.jsonwebtoken.io.IOException;
+
 public interface IRoomService {
-    Room addNewRoom(String photo, String roomType, BigDecimal roomPrice);
+    Room addNewRoom(MultipartFile photo, String roomType, BigDecimal roomPrice) throws IOException, java.io.IOException, SerialException, SQLException;
 }

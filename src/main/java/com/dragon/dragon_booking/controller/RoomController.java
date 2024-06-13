@@ -1,6 +1,9 @@
 package com.dragon.dragon_booking.controller;
 
 import java.math.BigDecimal;
+import java.sql.SQLException;
+
+import javax.sql.rowset.serial.SerialException;
 
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -13,6 +16,7 @@ import com.dragon.dragon_booking.model.Room;
 import com.dragon.dragon_booking.response.RoomResponse;
 import com.dragon.dragon_booking.service.IRoomService;
 
+import io.jsonwebtoken.io.IOException;
 import lombok.RequiredArgsConstructor;
 
 
@@ -25,9 +29,9 @@ public class RoomController {
    
    @PostMapping("/add/new-room")
    public ResponseEntity<RoomResponse> addNewRoom(
-   @RequestParam("photo") String  photo, 
+   @RequestParam("photo") MultipartFile photo, 
    @RequestParam("roomType") String roomType, 
-   @RequestParam("roomPrice") BigDecimal roomPrice) {
+   @RequestParam("roomPrice") BigDecimal roomPrice) throws IOException, SerialException, java.io.IOException, SQLException {
             Room savedRoom = roomService.addNewRoom(photo, roomType, roomPrice);
             RoomResponse response = new RoomResponse(savedRoom.getId(), savedRoom.getRoomType(), savedRoom.getRoomPrice());
             return ResponseEntity.ok(response);
